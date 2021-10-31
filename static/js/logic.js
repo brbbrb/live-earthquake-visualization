@@ -10,23 +10,52 @@ d3.json(earthquakeURL).then(function(data){
     createFeatures(data.features);
 });
 
+function getColor(depth) {
+    switch (true) {
+        case depth > 100:
+            return "red";
+        case depth > 80:
+            return "orange";
+        case depth > 60:
+            return "yellow";
+        case depth > 40:
+            return "light green";
+        case depth > 20:
+            return "green";
+        default:
+            return "dark green";
+    }
+};
+
+function getSize(mag) {
+    return mag * 3;
+};
+
 function createFeatures(earthquakeData) {
 
     // Define a function that we want to run once for each feature in the features array.
-    // Give each feature a popup that describes the place and time of the earthquake.
+    // Give each feature a popup that describes features of the earthquake
     function onEachFeature(feature, layer) {
-      layer.bindPopup(`<h2>${feature.properties.mag} Magnitude Earthquake</h2><hr><p><b>Time:</b> ${new Date(feature.properties.time)}</p><p><b>Location:</b> ${feature.properties.place}</p><p><b>Coordinates:</b> ${feature.geometry.coordinates[1]}, ${feature.geometry.coordinates[0]}</p><p><b>Depth:</b> ${feature.geometry.coordinates[2]}</p>`);
+        // add popup to each point on map
+        layer.bindPopup(`<h2>${feature.properties.mag} Magnitude Earthquake</h2><hr><p><b>Time:</b> ${new Date(feature.properties.time)}</p><p><b>Location:</b> ${feature.properties.place}</p><p><b>Coordinates:</b> ${feature.geometry.coordinates[1]}, ${feature.geometry.coordinates[0]}</p><p><b>Depth:</b> ${feature.geometry.coordinates[2]} km</p>`);
     }
   
     // Create a GeoJSON layer that contains the features array on the earthquakeData object.
     // Run the onEachFeature function once for each piece of data in the array.
     var earthquakes = L.geoJSON(earthquakeData, {
+      pointtoLayer: function(feature, latlng){
+          return new L.CircleMarker(latlng, {
+            radius: getSize(feature.properties.mag),
+            fillOpacity: 0.7,
+            fillColor: getColor(feature.geometry.coordinates[2])
+          })
+      },
       onEachFeature: onEachFeature
     });
   
     // Send our earthquakes layer to the createMap function/
     createMap(earthquakes);
-}
+};
 
 
 function createMap(earthquakes) {
@@ -54,9 +83,9 @@ function createMap(earthquakes) {
     // Create our map, giving it the streetmap and earthquakes layers to display on load.
     var myMap = L.map("map", {
       center: [
-        37.09, -95.71
+        5.55, -30.42
       ],
-      zoom: 5,
+      zoom: 3,
       layers: [street, earthquakes]
     });
   
@@ -67,9 +96,7 @@ function createMap(earthquakes) {
       collapsed: false
     }).addTo(myMap);
   
-  }
-  
-
+}
 
 
 
@@ -94,3 +121,26 @@ function createMap(earthquakes) {
 // d3.json(earthquakeURL).then(function(earthquakeData){
 //     function markerSize(mag)
 // });
+
+// for (var i = 0; i < feature.length; i++){
+//     var color = "";
+//     if (feature[i].geometry.coordinates[2] > 100) {
+//         color = "red";
+//     }
+//     else if (feature[i].geometry.coordinates[2] > 80) {
+//         color = "orange";
+//     }
+//     else if (feature[i].geometry.coordinates[2] > 60) {
+//         color = "yellow";
+//     }
+//     else if (feature[i].geometry.coordinates[2] > 40) {
+//         color = "light green";
+//     }
+//     else if (feature[i].geometry.coordinates[2] > 20) {
+//         color = "green";
+//     }
+//     else {
+//         color = "dark green";
+//     }
+    
+//     L.circle(earthquakes);
