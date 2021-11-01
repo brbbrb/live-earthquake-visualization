@@ -23,7 +23,7 @@ function getColor(depth) {
         case depth >= 10:
             return "#d6ca62";
         default:
-            return "#92ffad";
+            return "#72de8f";
     }
 };
 
@@ -39,10 +39,10 @@ function createFeatures(earthquakeData) {
     function markerFeatures(feature){
         return {
         radius: getSize(feature.properties.mag),
-        fillOpacity: 0.5,
+        fillOpacity: 0.7,
         fillColor: getColor(feature.geometry.coordinates[2]),
         color: "white",
-        weight: 1
+        weight: .7
         };
     }
 
@@ -99,12 +99,30 @@ function createMap(earthquakes) {
       layers: [street, earthquakes]
     });
 
-    
     // Create a layer control.
     // Pass it our baseMaps and overlayMaps.
     // Add the layer control to the map.
     L.control.layers(baseMaps, overlayMaps, {
       collapsed: false
     }).addTo(myMap);
+
+    // Create legend
+    var legend = L.control({ position: "bottomright" });
+
+    // add variables to legend in html
+    legend.onAdd = function(map) {
+      var div = L.DomUtil.create("div", "legend");
+      div.innerHTML += "<h4>Earthquake <br>Depth (km)</h4>";
+      div.innerHTML += '<li style="background: #72de8f"></li><span>  0-10</span><br>';
+      div.innerHTML += '<li style="background: #d6ca62"></li><span>  10-30</span><br>';
+      div.innerHTML += '<li style="background: #da9d39"></li><span>  30-50</span><br>';
+      div.innerHTML += '<li style="background: #cf721c"></li><span>  50-70</span><br>';
+      div.innerHTML += '<li style="background: #be4608"></li><span>  70-90</span><br>';
+      div.innerHTML += '<li style="background: #a70000"></li><span>  90+</span><br>';      
+      return div;
+    };
+
+    // add legend to map
+    legend.addTo(myMap);
 
 }
