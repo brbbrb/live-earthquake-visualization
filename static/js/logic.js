@@ -12,34 +12,38 @@ d3.json(earthquakeURL).then(function(data){
 
 function getColor(depth) {
     switch (true) {
-        case depth > 100:
+        case depth >= 90:
             return "red";
-        case depth > 80:
+        case depth >= 70:
             return "orange";
-        case depth > 60:
+        case depth >= 50:
             return "yellow";
-        case depth > 40:
-            return "light green";
-        case depth > 20:
+        case depth >= 30:
             return "green";
+        case depth >= 10:
+            return "blue";
         default:
-            return "dark green";
+            return "purple";
     }
 };
 
 function getSize(mag) {
-    return mag * 3;
+    return mag * 4;
 };
 
 // style info
-var markerFeatures = {
-    radius: getSize(feature.properties.mag),
-    fillOpacity: 0.7,
-    fillColor: getColor(feature.geometry.coordinates[2])
-}
+
 
 function createFeatures(earthquakeData) {
 
+    function markerFeatures(feature){
+        return {
+        radius: getSize(feature.properties.mag),
+        fillOpacity: 0.5,
+        fillColor: getColor(feature.geometry.coordinates[2]),
+        color: "none"
+        };
+    }
 
     // Define a function that we want to run once for each feature in the features array.
     // Give each feature a popup that describes features of the earthquake
@@ -52,9 +56,10 @@ function createFeatures(earthquakeData) {
     // Run the onEachFeature function once for each piece of data in the array.
     var earthquakes = L.geoJSON(earthquakeData, {
         pointToLayer: function(feature, latlng) {
-            return L.circleMarker(latlng, markerFeatures);
+            return L.circleMarker(latlng);
         },
-        onEachFeature: onEachFeature
+        onEachFeature: onEachFeature,
+        style: markerFeatures
     });
   
     // Send our earthquakes layer to the createMap function/
