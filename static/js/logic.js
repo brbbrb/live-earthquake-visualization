@@ -13,17 +13,17 @@ d3.json(earthquakeURL).then(function(data){
 function getColor(depth) {
     switch (true) {
         case depth >= 90:
-            return "red";
+            return "#a70000";
         case depth >= 70:
-            return "orange";
+            return "#be4608";
         case depth >= 50:
-            return "yellow";
+            return "#cf721c";
         case depth >= 30:
-            return "green";
+            return "#da9d39";
         case depth >= 10:
-            return "blue";
+            return "#d6ca62";
         default:
-            return "purple";
+            return "#92ffad";
     }
 };
 
@@ -41,7 +41,8 @@ function createFeatures(earthquakeData) {
         radius: getSize(feature.properties.mag),
         fillOpacity: 0.5,
         fillColor: getColor(feature.geometry.coordinates[2]),
-        color: "none"
+        color: "white",
+        weight: 1
         };
     }
 
@@ -97,21 +98,13 @@ function createMap(earthquakes) {
       zoom: 3,
       layers: [street, earthquakes]
     });
-  
+
+    
     // Create a layer control.
     // Pass it our baseMaps and overlayMaps.
     // Add the layer control to the map.
     L.control.layers(baseMaps, overlayMaps, {
       collapsed: false
     }).addTo(myMap);
-  
+
 }
-
-
-// pointtoLayer: function(feature, latlng){
-//     return new L.CircleMarker(latlng, {
-//       radius: getSize(feature.properties.mag),
-//       fillOpacity: 0.7,
-//       fillColor: getColor(feature.geometry.coordinates[2])
-//     })
-// },
