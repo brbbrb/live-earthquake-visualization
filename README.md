@@ -33,5 +33,5 @@ Using the Leaflet library, all of the earthquakes can be plotted from the data s
    * Depth
 * A legend was added to the map to give context to the color scale
 
-![gif](Images/map_recording.gif)
+![gif](Images/map_recording1.gif)
 For live site, click here: https://brbbrb.github.io/leaflet-challenge/
