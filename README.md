@@ -2,13 +2,13 @@
 
 ![1-Logo](Images/earthquake_header.jpeg)
 
-## Background
+## Summary
 
 The USGS (United States Geological Survey) is responsible for providing scientific data about natural hazards, among other things. This project utilizes a combination of Leaflet, D3, and HTML to convert GeoJSON data from the USGS feed into a web-based visualization of earthquakes around the world from the past 7 days.
 
 
 ## Deployment Link
-Check out the final site here: https://brbbrb.github.io/live-earthquake-map/
+If you could care less about the "how" and just want to see the live site, click here: https://brbbrb.github.io/live-earthquake-map/
 
 
 ## Retrieving Data
