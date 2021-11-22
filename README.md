@@ -8,7 +8,7 @@ The USGS (United States Geological Survey) is responsible for providing scientif
 
 
 ## Deployment Link
-Check out the final site here: https://brbbrb.github.io/leaflet-challenge/
+Check out the final site here: https://brbbrb.github.io/earthquakes-world-map/
 
 
 ## Retrieving Data
@@ -34,4 +34,4 @@ Using the Leaflet library, all of the earthquakes can be plotted from the data s
 * A legend was added to the map to give context to the color scale
 
 ![gif](Images/map_recording1.gif)
-For live site, click here: https://brbbrb.github.io/leaflet-challenge/
+For live site, click here: https://brbbrb.github.io/earthquakes-world-map/
