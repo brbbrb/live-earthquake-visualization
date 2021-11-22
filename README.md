@@ -1,4 +1,4 @@
-# Leaflet Homework: Visualizing Data with Leaflet
+# Visualizing Data with Leaflet
 
 ![1-Logo](Images/earthquake_header.jpeg)
 
