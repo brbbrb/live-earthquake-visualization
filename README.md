@@ -8,7 +8,7 @@ The USGS (United States Geological Survey) is responsible for providing scientif
 
 
 ## Deployment Link
-If you could care less about the "how" and just want to see the live site, click here: https://brbbrb.github.io/live-earthquake-map/
+If you could care less about the "how" and just want to see the live site, click here: https://brbbrb.github.io/Live-Earthquake-Map/
 
 
 ## Retrieving Data
@@ -34,4 +34,4 @@ Using the Leaflet library, all of the earthquakes can be plotted from the data s
 * A legend was added to the map to give context to the color scale
 
 ![gif](Images/map_recording1.gif)
-For live site, click here: https://brbbrb.github.io/live-earthquake-map/
+For live site, click here: https://brbbrb.github.io/Live-Earthquake-Map/
