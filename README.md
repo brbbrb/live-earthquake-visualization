@@ -1,5 +1,4 @@
-# Earthquakes World Map:
-## Visualizing Data with Leaflet
+# Earthquakes World Map
 
 ![1-Logo](Images/earthquake_header.jpeg)
 
