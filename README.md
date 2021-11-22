@@ -1,10 +1,10 @@
-# Earthquakes World Map
+# Live Earthquake Map
 
 ![1-Logo](Images/earthquake_header.jpeg)
 
 ## Background
 
-The USGS (United States Geological Survey) is responsible for providing scientific data about natural hazards, among other things. This project utilizes a combination of Leaflet, D3, and HTML to create a web-based visualization of earthquakes around the world.
+The USGS (United States Geological Survey) is responsible for providing scientific data about natural hazards, among other things. This project utilizes a combination of Leaflet, D3, and HTML to convert GeoJSON data from the USGS feed into a web-based visualization of earthquakes around the world from the past 7 days.
 
 
 ## Deployment Link
